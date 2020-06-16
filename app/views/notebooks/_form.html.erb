@@ -1,0 +1,23 @@
+<%= form_with(model: notebook, local: true) do |form| %>
+  <% if notebook.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(notebook.errors.count, "error") %> prohibited this notebook from being saved:</h2>
+
+      <ul>
+        <% notebook.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field mb-3">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', notebooks_path, class: 'btn btn-secondary ml-1' %>
+  </div>
+<% end %>

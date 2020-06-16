@@ -1,0 +1,6 @@
+<h3>
+  Editing Page
+  <%= link_to 'View', notebook_page_path(@notebook, @page), class: 'btn btn-outline-primary' %>
+</h3>
+
+<%= render 'form', notebook: @notebook, page: @page %>
