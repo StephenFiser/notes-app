@@ -8,6 +8,7 @@ class PagesController < ApplicationController
     add_breadcrumb(@page.title)
     @paragraph = @page.paragraphs.build
     @image_element = @page.image_elements.build
+    @checklist = @page.checklists.build
   end
 
   # GET /pages/new

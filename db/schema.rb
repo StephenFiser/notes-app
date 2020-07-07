@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_12_213818) do
+ActiveRecord::Schema.define(version: 2020_06_22_181648) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +41,23 @@ ActiveRecord::Schema.define(version: 2020_06_12_213818) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "checklist_items", force: :cascade do |t|
+    t.integer "checklist_id", null: false
+    t.string "title"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["checklist_id"], name: "index_checklist_items_on_checklist_id"
+  end
+
+  create_table "checklists", force: :cascade do |t|
+    t.integer "page_id", null: false
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["page_id"], name: "index_checklists_on_page_id"
   end
 
   create_table "image_elements", force: :cascade do |t|
@@ -87,6 +104,8 @@ ActiveRecord::Schema.define(version: 2020_06_12_213818) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "checklist_items", "checklists"
+  add_foreign_key "checklists", "pages"
   add_foreign_key "image_elements", "pages"
   add_foreign_key "notebooks", "users"
   add_foreign_key "pages", "notebooks"
