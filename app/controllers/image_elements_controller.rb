@@ -1,4 +1,5 @@
 class ImageElementsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     notebook = current_user.notebooks.find(params[:notebook_id])

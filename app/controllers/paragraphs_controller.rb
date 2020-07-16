@@ -1,4 +1,5 @@
 class ParagraphsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_paragraph, only: [:update, :destroy]
 
   # POST /paragraphs

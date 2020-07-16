@@ -1,0 +1,18 @@
+<% page = image_element.page %>
+<% notebook = page.notebook %>
+
+<div class="image-content p-4 mb-2">
+  <% if image_element.persisted? %>
+    <% if image_element.image.present? %>
+      <%= image_tag(image_element.image) %>
+    <% else %>
+      <%= form_with(model: [notebook, page, image_element]) do |form| %>
+        <%= form.file_field :image %>
+        <div class="buttons mt-3">
+          <%= form.submit "Save", class: 'btn btn-primary' %>
+          <!-- <a href="#" class='cancel btn btn-light'>Cancel</a> -->
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
