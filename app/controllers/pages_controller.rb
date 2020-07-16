@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_notebook
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   before_action :set_base_breadcrumbs, only: [:show, :new, :edit]

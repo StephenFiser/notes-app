@@ -1,0 +1,21 @@
+<% page = paragraph.page %>
+<% notebook = page.notebook %>
+
+<% if paragraph.persisted? %>
+  <div class="text-content p-4 mb-2">
+    <% if paragraph.content.present? %>
+      <%= paragraph.content %>
+    <% else %>
+      <i>Click here to add text.</i>
+    <% end%>
+  </div>
+  <div class="form-content d-none p-4 mb-2">
+    <%= form_with(model: [notebook, page, paragraph]) do |form| %>
+      <%= form.rich_text_area :content %>
+      <div class="buttons mt-3">
+        <%= form.submit "Save", class: 'btn btn-primary' %>
+        <a href="#" class='cancel btn btn-light'>Cancel</a>
+      </div>
+    <% end %>
+  </div>
+<% end %>

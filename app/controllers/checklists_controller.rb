@@ -1,4 +1,5 @@
 class ChecklistsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_checklist, only: [:show, :edit, :update, :destroy]
 
   # GET /checklists
