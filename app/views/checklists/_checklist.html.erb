@@ -2,7 +2,7 @@
 <% notebook = page.notebook %>
 
 <% if checklist.persisted? %>
-  <div class="p-4">
+  <div class="p-4" id="checklist-<%= checklist.id %>">
     <div class="text-content mb-2 p-2">
       <% if checklist.title.present? %>
         <h5 class='m-0'><%= checklist.title %></h5>
