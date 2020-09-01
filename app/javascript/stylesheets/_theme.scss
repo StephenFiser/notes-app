@@ -1,0 +1,53 @@
+$theme-color: "cyan";
+
+body {
+  background-color: mcolor($theme-color, "lighten-5");
+}
+
+.top-stripe {
+  background-color: mcolor($theme-color, "darken-4");
+  width: 100%;
+  padding: 5px;
+  a {
+    font-size: 13px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    &:hover {
+      color: mcolor($theme-color, "lighten-5");
+    }
+  }
+}
+.toolbar {
+  background-color: mcolor($theme-color, "darken-3");
+  width: 100%;
+  padding: 5px;
+  .breadcrumb {
+    padding-left: 0;
+    background-color: transparent;
+    margin-bottom: 0;
+    .breadcrumb-item {
+      a {
+        color: mcolor($theme-color, "accent-2");
+      }
+      &::before {
+        color: mcolor($theme-color, "base");
+      }
+      &.active {
+        color: white;
+      }
+    }
+  }
+  .btn-toolbar {
+    background-color: mcolor($theme-color, "darken-4");
+    color: white;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: darken(mcolor($theme-color, "darken-4"), 5);
+    }
+  }
+}
+
+.highlight-text {
+  color: mcolor($theme-color, "accent-2");
+}

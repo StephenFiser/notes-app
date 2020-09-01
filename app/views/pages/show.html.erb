@@ -1,22 +1,33 @@
-<h3 class='d-flex justify-content-between mb-5'>
-  <div>
-    <%= @page.title %>
-    <%= link_to 'Edit', edit_notebook_page_path(@notebook, @page), class: 'btn btn-outline-primary' %>
-  </div>
-
-  <div>
+<% provide(:tools) do %>
+  <div class='pt-2'>
     <%= form_with(model: [@notebook, @page, @paragraph], html: { class: 'float-left mr-1' }) do |form| %>
-      <%= form.submit "Add Paragraph", class: 'btn btn-primary' %>
+      <%= button_tag(class: "btn btn-toolbar") do %>
+        <i class='fas fa-paragraph'></i>
+      <% end %>
     <% end %>
     <%= form_with(model: [@notebook, @page, @image_element], html: { class: 'float-left mr-1' }) do |form| %>
-      <%= form.submit "Add Image", class: 'btn btn-primary' %>
+      <%= button_tag(class: "btn btn-toolbar") do %>
+        <i class='fas fa-image'></i>
+      <% end %>
     <% end %>
-    <%= form_with(model: [@notebook, @page, @checklist], html: { class: 'float-left' }) do |form| %>
-      <%= form.submit "Add Checklist", class: 'btn btn-primary' %>
+    <%= form_with(model: [@notebook, @page, @checklist], html: { class: 'float-left mr-1' }) do |form| %>
+      <%= button_tag(class: "btn btn-toolbar") do %>
+        <i class='fas fa-list'></i>
+      <% end %>
+    <% end %>
+    <%= link_to edit_notebook_page_path(@notebook, @page), class: 'btn btn-toolbar' do %>
+      <i class='fas fa-edit'></i>
     <% end %>
   </div>
-</h3>
+<% end %>
 
 <div class="col-lg-10 offset-lg-1">
-  <%= render @page.elements %>
+  <div class="card">
+    <div class="card-body">
+      <h3 class='p-4 pt-5'>
+        <%= @page.title %>
+      </h3>
+      <%= render @page.elements %>
+    </div>
+  </div>
 </div>
